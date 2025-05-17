@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "angular.ng-template",
+    "vmware.vscode-spring-boot",
+    "vscjava.vscode-java-pack",
+    "mongodb.mongodb-vscode",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "redhat.vscode-yaml",
+    "vscjava.vscode-spring-boot-dashboard",
+    "bradlc.vscode-tailwindcss"
+  ]
+}
