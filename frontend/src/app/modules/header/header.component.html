@@ -1,0 +1,65 @@
+<header
+  class="text-white flex justify-between items-center bg-[#1e1e1e] px-5 py-0"
+>
+  <div>
+    <img src="assets/images/logo_text.png" alt="Logo" class="h-32 w-auto" />
+  </div>
+
+  <!-- Botón hamburguesa -->
+  <button (click)="toggleMenu()" class="md:hidden focus:outline-none">
+    <svg
+      class="w-6 h-6"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 12h16M4 18h16"
+      ></path>
+    </svg>
+  </button>
+
+  <!-- Menú de navegación desktop -->
+  <nav class="hidden md:flex space-x-20 px-10">
+    <button
+      class="px-5 py-2 border border-white rounded-2xl font-semibold tracking-wide hover:bg-[#2eaae0] hover:text-white transition duration-300 shadow-md"
+    >
+      Inicio
+    </button>
+    <button
+      class="px-5 py-2 border border-white rounded-2xl font-semibold tracking-wide hover:bg-[#2eaae0] hover:text-white transition duration-300 shadow-md"
+    >
+      APP
+    </button>
+    <button
+      class="px-5 py-2 border border-white rounded-2xl font-semibold tracking-wide hover:bg-[#2eaae0] hover:text-white transition duration-300 shadow-md"
+    >
+      Atletas
+    </button>
+  </nav>
+</header>
+
+<div
+  *ngIf="menuOpen"
+  class="text-white md:hidden mt-14 px-4 flex flex-col space-y-4 fixed top-[80px] left-100 right-0 border-t border-white z-50"
+>
+  <button
+    class="bg-[#1e1e1e] px-5 py-2 border border-white rounded-2xl font-semibold tracking-wide hover:bg-[#2eaae0] hover:text-white transition duration-300 shadow-md"
+  >
+    Inicio
+  </button>
+  <button
+    class="bg-[#1e1e1e] px-5 py-2 border border-white rounded-2xl font-semibold tracking-wide hover:bg-[#2eaae0] hover:text-white transition duration-300 shadow-md"
+  >
+    APP
+  </button>
+  <button
+    class="bg-[#1e1e1e] px-5 py-2 border border-white rounded-2xl font-semibold tracking-wide hover:bg-[#2eaae0] hover:text-white transition duration-300 shadow-md"
+  >
+    Atletas
+  </button>
+</div>
