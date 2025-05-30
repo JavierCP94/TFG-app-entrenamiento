@@ -1,3 +1,4 @@
+
 package com.example.springbackend;
 
 import org.springframework.boot.SpringApplication;
@@ -10,4 +11,24 @@ public class SpringBackendApplication {
         SpringApplication.run(SpringBackendApplication.class, args);
     }
 
+    /*
+     * @Bean
+     * CommandLineRunner init(ExerciseRepository repository) {
+     * return args -> {
+     * if (repository.count() == 0) {
+     * Exercise pushups = new Exercise();
+     * pushups.setName("Push Ups");
+     * pushups.setImageUrl("https://example.com/images/pushups.png");
+     * pushups.setSeries(3);
+     * pushups.setRepetitions(15);
+     * pushups.setRestSeconds(60);
+     * pushups.setMuscleGroup("Upper Body");
+     * pushups.setLevel("Beginner");
+     * 
+     * repository.save(pushups);
+     * System.out.println("✔ Inserted example exercise into MongoDB");
+     * }
+     * };
+     * }
+     */
 }

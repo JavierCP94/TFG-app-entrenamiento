@@ -1,9 +1,14 @@
 <header
   class="text-white flex justify-between items-center bg-[#1e1e1e] px-5 py-0"
 >
-  <div>
-    <img src="assets/images/logo_text.png" alt="Logo" class="h-32 w-auto" />
-  </div>
+  <button>
+    <img
+      routerLink=""
+      src="assets/images/logo_text.png"
+      alt="Logo"
+      class="h-32 w-auto"
+    />
+  </button>
 
   <!-- Botón hamburguesa -->
   <button (click)="toggleMenu()" class="md:hidden focus:outline-none">
@@ -26,11 +31,13 @@
   <!-- Menú de navegación desktop -->
   <nav class="hidden md:flex space-x-20 px-10">
     <button
+      routerLink=""
       class="px-5 py-2 border border-white rounded-2xl font-semibold tracking-wide hover:bg-[#2eaae0] hover:text-white transition duration-300 shadow-md"
     >
-      Inicio
+      Home
     </button>
     <button
+      routerLink="/APP"
       class="px-5 py-2 border border-white rounded-2xl font-semibold tracking-wide hover:bg-[#2eaae0] hover:text-white transition duration-300 shadow-md"
     >
       APP
@@ -38,7 +45,7 @@
     <button
       class="px-5 py-2 border border-white rounded-2xl font-semibold tracking-wide hover:bg-[#2eaae0] hover:text-white transition duration-300 shadow-md"
     >
-      Atletas
+      Atlethes
     </button>
   </nav>
 </header>
