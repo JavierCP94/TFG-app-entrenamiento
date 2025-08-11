@@ -2,8 +2,9 @@ package com.example.springbackend.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -36,21 +37,46 @@ public class ExerciseController {
 
         if (muscleGroup.equals("Full Body")) {
             if (count == 1) {
-                return exerciseRepository.findByMuscleGroupAndLevel("Full Body", level);
+                List<Exercise> fullBody = exerciseRepository.findByMuscleGroupAndLevelIgnoreCase("Full Body", level);
+                Collections.shuffle(fullBody);
+                return fullBody.stream().limit(1).toList();
             } else {
-                List<Exercise> upper = exerciseRepository.findByMuscleGroupAndLevel("Upper Body", level);
-                List<Exercise> lower = exerciseRepository.findByMuscleGroupAndLevel("Lower Body", level);
-                List<Exercise> mixed = new ArrayList<>();
-                mixed.addAll(upper);
-                mixed.addAll(lower);
-                Collections.shuffle(mixed);
-                return mixed.stream().limit(count).collect(Collectors.toList());
+                List<Exercise> upper = new ArrayList<>(
+                        exerciseRepository.findByMuscleGroupAndLevelIgnoreCase("Upper Body", level));
+                List<Exercise> lower = new ArrayList<>(
+                        exerciseRepository.findByMuscleGroupAndLevelIgnoreCase("Lower Body", level));
+                Collections.shuffle(upper);
+                Collections.shuffle(lower);
+
+                List<Exercise> result = new ArrayList<>();
+                int upperIndex = 0;
+                int lowerIndex = 0;
+
+                for (int i = 0; i < count; i++) {
+                    if (i % 2 == 0 && upperIndex < upper.size()) {
+                        result.add(upper.get(upperIndex++));
+                    } else if (lowerIndex < lower.size()) {
+                        result.add(lower.get(lowerIndex++));
+                    }
+                }
+
+                return result;
             }
         }
 
-        return exerciseRepository.findByMuscleGroupAndLevel(muscleGroup, level)
-                .stream().limit(count)
-                .collect(Collectors.toList());
-    }
+        List<Exercise> filtered = new ArrayList<>(exerciseRepository.findByMuscleGroupAndLevelIgnoreCase(muscleGroup, level));
+        Collections.shuffle(filtered);
+        Set<String> usedNames = new HashSet<>();
+        List<Exercise> unique = new ArrayList<>();
 
+        for (Exercise e : filtered) {
+            if (usedNames.add(e.getName())) {
+                unique.add(e);
+                if (unique.size() == count)
+                    break;
+            }
+        }
+
+        return unique;
+    }
 }

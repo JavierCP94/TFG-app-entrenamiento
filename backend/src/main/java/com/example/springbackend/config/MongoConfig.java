@@ -10,6 +10,6 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
 
     @Override
     protected String getDatabaseName() {
-        return "app_db";
+        return "Exercises";
     }
 }

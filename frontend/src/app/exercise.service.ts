@@ -31,6 +31,7 @@ export class ExerciseService {
       .set("level", level)
       .set("count", count.toString());
 
+    // Realiza una solicitud GET al endpoint del backend
     return this.http.get<Exercise[]>(this.baseUrl, { params });
   }
 }

@@ -11,7 +11,7 @@ public class Exercise {
 
     private String name;
     private String imageUrl;
-    private int sets;
+    private int sets; // Número de series
     private int repetitions;
     private int restSeconds;
 
@@ -19,7 +19,6 @@ public class Exercise {
     private String level; // "Beginner", "Intermediate", "Advanced"
 
     // Getters y Setters
-
     public String getId() {
         return id;
     }
@@ -44,11 +43,11 @@ public class Exercise {
         this.imageUrl = imageUrl;
     }
 
-    public int getSeries() {
+    public int getSets() {
         return sets;
     }
 
-    public void setSeries(int sets) {
+    public void setSets(int sets) {
         this.sets = sets;
     }
 
