@@ -29,7 +29,7 @@
   </button>
 
   <!-- Menú de navegación desktop -->
-  <nav class="hidden md:flex space-x-20 px-10">
+  <nav class="hidden md:flex space-x-4 px-10 items-center">
     <button
       routerLink=""
       class="px-5 py-2 border border-white rounded-2xl font-semibold tracking-wide hover:bg-[#2eaae0] hover:text-white transition duration-300 shadow-md"
@@ -37,11 +37,39 @@
       Home
     </button>
     <button
+      *ngIf="isAuthenticated"
       routerLink="/APP"
       class="px-5 py-2 border border-white rounded-2xl font-semibold tracking-wide hover:bg-[#2eaae0] hover:text-white transition duration-300 shadow-md"
     >
       APP
     </button>
+
+    <!-- Botones de autenticación -->
+    <div *ngIf="!isAuthenticated" class="flex space-x-2">
+      <button
+        (click)="login()"
+        class="px-5 py-2 border border-white rounded-2xl font-semibold tracking-wide hover:bg-[#2eaae0] hover:text-white transition duration-300 shadow-md"
+      >
+        Login
+      </button>
+      <button
+        routerLink="/register"
+        class="px-5 py-2 bg-[#2eaae0] rounded-2xl font-semibold tracking-wide hover:bg-[#1e90ff] transition duration-300 shadow-md"
+      >
+        Register
+      </button>
+    </div>
+
+    <!-- Usuario logueado -->
+    <div *ngIf="isAuthenticated" class="flex items-center space-x-3">
+      <span class="text-sm">Hello, {{ currentUser?.firstName }}!</span>
+      <button
+        (click)="logout()"
+        class="px-4 py-2 bg-red-600 rounded-2xl font-semibold tracking-wide hover:bg-red-700 transition duration-300 shadow-md"
+      >
+        Logout
+      </button>
+    </div>
   </nav>
 </header>
 
@@ -50,13 +78,51 @@
   class="text-white md:hidden mt-14 px-4 flex flex-col space-y-4 fixed top-[80px] left-100 right-0 z-50"
 >
   <button
-    class="bg-[#1e1e1e] px-5 py-2 border border-white rounded-2xl font-semibold tracking-wide hover:bg-[#2eaae0] hover:text-white transition duration-300 shadow-md"
+    routerLink=""
+    (click)="toggleMenu()"
+    class="bg-[#1e1e1e] shadow-lg px-5 py-2 border border-white rounded-2xl font-semibold tracking-wide hover:bg-[#2eaae0] hover:text-white transition duration-300 shadow-md"
   >
-    Inicio
+    Home
   </button>
+
   <button
-    class="bg-[#1e1e1e] px-5 py-2 border border-white rounded-2xl font-semibold tracking-wide hover:bg-[#2eaae0] hover:text-white transition duration-300 shadow-md"
+    *ngIf="isAuthenticated"
+    routerLink="/APP"
+    (click)="toggleMenu()"
+    class="bg-[#1e1e1e] shadow-lg px-5 py-2 border border-white rounded-2xl font-semibold tracking-wide hover:bg-[#2eaae0] hover:text-white transition duration-300 shadow-md"
   >
     APP
   </button>
+
+  <!-- Botones de autenticación para móvil -->
+
+  <button
+    (click)="login(); toggleMenu()"
+    class="bg-[#1e1e1e] shadow-lg px-5 py-2 border border-white rounded-2xl font-semibold tracking-wide hover:bg-[#2eaae0] hover:text-white transition duration-300 shadow-md"
+  >
+    Login
+  </button>
+  <button
+    routerLink="/register"
+    (click)="toggleMenu()"
+    class="bg-[#2eaae0] px-5 py-2 rounded-2xl font-semibold tracking-wide hover:bg-[#1e90ff] transition duration-300 shadow-md"
+  >
+    Register
+  </button>
+
+  <!-- Usuario logueado para móvil -->
+  <div
+    *ngIf="isAuthenticated"
+    class="flex flex-col space-y-3 pt-2 border-t border-gray-600"
+  >
+    <span class="text-center text-sm text-gray-300"
+      >Hello, {{ currentUser?.firstName }}!</span
+    >
+    <button
+      (click)="logout(); toggleMenu()"
+      class="bg-red-600 px-5 py-2 rounded-2xl font-semibold tracking-wide hover:bg-red-700 transition duration-300 shadow-md"
+    >
+      Logout
+    </button>
+  </div>
 </div>
