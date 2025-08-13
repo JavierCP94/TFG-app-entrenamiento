@@ -1,27 +1,29 @@
 # Etapa 1: Construcción con Maven y Java 17
-FROM maven:3.8.6-openjdk-17 AS build
+FROM maven:3.9.4-eclipse-temurin-17 AS build
 
 # Directorio de trabajo en la imagen
 WORKDIR /app
 
-# Copiar el pom.xml y descargar dependencias para cachear
+# Copiamos pom.xml y descargamos dependencias
 COPY pom.xml .
 RUN mvn dependency:go-offline
 
-# Copiar el código fuente y compilar el proyecto
+# Copiamos el código fuente
 COPY src ./src
+
+# Compilamos la aplicación
 RUN mvn clean package -DskipTests
 
-# Etapa 2: Imagen ligera solo con Java para ejecutar
-FROM openjdk:17-jdk-slim
+# Etapa 2: Imagen ligera para ejecutar
+FROM eclipse-temurin:17-jdk-jammy
 
 WORKDIR /app
 
-# Copiar el .jar generado desde la etapa anterior
+# Copiamos el jar generado
 COPY --from=build /app/target/*.jar app.jar
 
-# Render usará una variable PORT, la exponemos
+# Puerto que expone la app
 EXPOSE 8080
 
-# Comando de inicio
-ENTRYPOINT ["java","-jar","app.jar"]
+# Comando de ejecución
+ENTRYPOINT ["java", "-jar", "app.jar"]
