@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -13,6 +15,8 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import jakarta.servlet.http.HttpServletResponse;
 
 @Configuration
 @EnableWebSecurity
@@ -30,18 +34,31 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authz -> authz
-                        // Endpoints públicos
+                        // Permitir acceso a recursos estáticos y endpoints públicos
                         .requestMatchers(
-                                "/api/auth/register",
-                                "/api/auth/login",
+                                "/",
+                                "/index.html",
+                                "/assets/**",
+                                "/api/auth/**",
                                 "/api/health",
                                 "/keepalive",
                                 "/v3/api-docs/**",
                                 "/swagger-ui/**",
-                                "/swagger-ui.html"
+                                "/swagger-ui.html",
+                                "/error"
                         ).permitAll()
+                        // Permitir cualquier solicitud OPTIONS (necesario para CORS)
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         // El resto de endpoints requieren autenticación
                         .anyRequest().authenticated()
+                )
+                // Configuración para manejar el acceso denegado
+                .exceptionHandling(exceptionHandling -> exceptionHandling
+                        .authenticationEntryPoint((request, response, authException) -> {
+                            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+                            response.getWriter().write("{\"error\":\"No autorizado. Por favor inicie sesión.\"}");
+                        })
                 )
                 // Deshabilitar el formulario de login por defecto
                 .formLogin(form -> form.disable())
