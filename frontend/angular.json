@@ -58,9 +58,9 @@
           },
           "configurations": {
             "production": {
-              "outputPath": "../backend/src/main/resources/static/browser",
-              "baseHref": "/browser/",
-              "deployUrl": "/browser/",
+              "outputPath": "../backend/src/main/resources/static",
+              "baseHref": "/",
+              "deployUrl": "/",
               "budgets": [
                 {
                   "type": "initial",

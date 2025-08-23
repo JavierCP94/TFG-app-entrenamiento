@@ -1,16 +1,18 @@
 package com.example.springbackend.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class SpaForwardController {
 
-    @RequestMapping(value = {
+    // Handle all routes and forward to index.html
+    @GetMapping({
         "/",
-        "/{x:^(?!api|browser|assets|static|v3|swagger-ui|webjars|v2|swagger-resources|configuration|favicon.ico|error).*$}/**"
+        "/{path:^(?!.*\\.).*$",
+        "/**/{path:^(?!.*\\.).*$}"
     })
     public String forwardToSpa() {
-        return "forward:/browser/index.html";
+        return "forward:/index.html";
     }
 }

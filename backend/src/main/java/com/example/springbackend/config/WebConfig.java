@@ -23,10 +23,12 @@ public class WebConfig implements WebMvcConfigurer {
     public void addResourceHandlers(@NonNull ResourceHandlerRegistry registry) {
         // Configurar el manejador de recursos estáticos
         registry.addResourceHandler("/**")
-                .addResourceLocations(
-                        "classpath:/static/browser/",
-                        "classpath:/static/"
-                )
+                .addResourceLocations("classpath:/static/")
+                .setCachePeriod(0);
+        
+        // Habilitar el manejo de recursos webjars
+        registry.addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/")
                 .setCachePeriod(0);
     }
 }
