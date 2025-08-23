@@ -14,6 +14,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import java.util.Collections;
+
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 
@@ -35,7 +37,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .cors(cors -> {})
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authz -> authz
@@ -43,16 +45,25 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/",
                                 "/index.html",
-                                "/assets/**",
-                                "/*.js",
-                                "/*.css",
-                                "/*.ico",
-                                "/*.png",
-                                "/*.svg",
-                                "/*.woff2",
-                                "/*.woff",
-                                "/*.ttf",
                                 "/browser/**",
+                                "/assets/**",
+                                "/static/**",
+                                "/**/*.js",
+                                "/**/*.css",
+                                "/**/*.ico",
+                                "/**/*.png",
+                                "/**/*.svg",
+                                "/**/*.woff2",
+                                "/**/*.woff",
+                                "/**/*.ttf",
+                                "/**/*.json",
+                                "/**/*.jpg",
+                                "/**/*.jpeg",
+                                "/**/*.gif",
+                                "/**/*.html"
+                        ).permitAll()
+                        // Endpoints públicos de la API
+                        .requestMatchers(
                                 "/api/auth/**",
                                 "/api/health",
                                 "/keepalive",
@@ -63,8 +74,8 @@ public class SecurityConfig {
                         ).permitAll()
                         // Permitir cualquier solicitud OPTIONS (necesario para CORS)
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        // El resto de endpoints requieren autenticación
-                        .anyRequest().authenticated()
+                        // Temporalmente permitir todo el acceso
+                        .anyRequest().permitAll()
                 )
                 // Configuración para manejar el acceso denegado
                 .exceptionHandling(exceptionHandling -> exceptionHandling
@@ -85,10 +96,19 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOriginPatterns(appProperties.getAllowedOrigins());
+        List<String> allowedOrigins = appProperties.getAllowedOrigins();
+        
+        // Si se especifica "*" como origen permitido, permitir todos los orígenes
+        if (allowedOrigins.contains("*")) {
+            configuration.setAllowedOriginPatterns(Collections.singletonList("*"));
+            configuration.setAllowCredentials(false); // No se puede usar allowCredentials con "*"
+        } else {
+            configuration.setAllowedOriginPatterns(allowedOrigins);
+            configuration.setAllowCredentials(true);
+        }
+        
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
-        configuration.setAllowCredentials(true);
         configuration.setExposedHeaders(List.of("Authorization"));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
