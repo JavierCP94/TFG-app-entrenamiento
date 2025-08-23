@@ -12,10 +12,21 @@ RUN mvn dependency:go-offline
 COPY backend/src ./src
 RUN mvn clean package -DskipTests
 
-# Etapa 2: Imagen final con JDK
-FROM eclipse-temurin:17-jdk-jammy
+# Etapa 2: Imagen final con JRE más ligero
+FROM eclipse-temurin:17-jre-jammy
+
+# Puerto que expone el contenedor
+EXPOSE 10000
+
+# Directorio de trabajo
 WORKDIR /app
+
+# Copiamos el JAR construido
 COPY --from=build /app/target/*.jar app.jar
 
-# Comando de inicio
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Variables de entorno por defecto
+ENV SPRING_PROFILES_ACTIVE=prod
+ENV SERVER_PORT=10000
+
+# Comando de inicio con soporte para variables de entorno
+ENTRYPOINT ["sh", "-c", "java -Dserver.port=${PORT:-10000} -jar app.jar"]
