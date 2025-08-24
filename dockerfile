@@ -1,23 +1,33 @@
-# Etapa 1: Construcción del Frontend
-FROM node:18 AS frontend-build
+# Etapa 1: Construir el frontend
+FROM node:18 AS frontend
 WORKDIR /app
-COPY frontend/package*.json ./
-RUN npm install
 COPY frontend/ .
-RUN npm run build -- --configuration production
+RUN npm install
+RUN npm run build -- --configuration=production
 
-# Etapa 2: Construcción del Backend
+# Crear directorio de salida si no existe
+RUN mkdir -p /app/output/static
+
+# Mover archivos generados a una ubicación conocida
+RUN if [ -d "/app/backend/src/main/resources/static" ]; then \
+        mv /app/backend/src/main/resources/static/* /app/output/static/; \
+    elif [ -d "/app/dist/frontend" ]; then \
+        mv /app/dist/frontend/* /app/output/static/; \
+    fi
+
+# Etapa 2: Construir el backend
 FROM maven:3.9.4-eclipse-temurin-17 AS backend-build
 WORKDIR /app
+
+# Copiar el código del backend
 COPY backend/pom.xml .
-RUN mvn dependency:go-offline
 COPY backend/src ./src
 
 # Crear directorio de recursos estáticos
 RUN mkdir -p src/main/resources/static
 
-# Copiar archivos estáticos del frontend
-COPY --from=frontend-build /app/dist/frontend/ src/main/resources/static/
+# Copiar los archivos del frontend construidos
+COPY --from=frontend /app/output/static/ src/main/resources/static/
 
 # Construir la aplicación
 RUN mvn clean package -DskipTests
