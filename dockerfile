@@ -8,18 +8,18 @@ RUN npm run build -- --configuration production
 
 # Etapa 2: Construcción del Backend
 FROM maven:3.9.4-eclipse-temurin-17 AS backend-build
-WORKDIR /app/backend
+WORKDIR /app
 COPY backend/pom.xml .
 RUN mvn dependency:go-offline
 COPY backend/src ./src
 
 # Copiar archivos estáticos del frontend al directorio de recursos estáticos del backend
-COPY --from=frontend-build /app/frontend/dist/frontend /app/backend/src/main/resources/static
+COPY --from=frontend-build /app/frontend/dist/frontend /app/src/main/resources/static
 
 # Construir la aplicación
 RUN mvn clean package -DskipTests
 
-# Etapa 2: Imagen final con JRE más ligero
+# Etapa 3: Imagen final con JRE más ligero
 FROM eclipse-temurin:17-jre-jammy
 
 # Puerto que expone el contenedor
@@ -29,7 +29,7 @@ EXPOSE 10000
 WORKDIR /app
 
 # Copiamos el JAR construido
-COPY --from=build /app/target/*.jar app.jar
+COPY --from=backend-build /app/target/*.jar app.jar
 
 # Variables de entorno por defecto
 ENV SPRING_PROFILES_ACTIVE=prod
