@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class SpaForwardController {
 
+    // Handle all GET requests that don't match static resources or API endpoints
     @GetMapping({
         "/",
         "/home",
@@ -17,11 +18,17 @@ public class SpaForwardController {
         "/dashboard",
         "/exercises",
         "/workouts",
-        "/profile",
-        "/**/{path:^(?!api|static|assets|.*\\.(js|css|json|png|jpg|jpeg|gif|ico|svg)$).*$}"
+        "/profile"
     })
     @ResponseBody
     public Resource forwardToSpa() {
+        return new ClassPathResource("/static/browser/index.html");
+    }
+    
+    // Catch-all for all other paths except those with file extensions
+    @GetMapping("/**/{path:[^.]*}")
+    @ResponseBody
+    public Resource forwardToSpaCatchAll() {
         return new ClassPathResource("/static/browser/index.html");
     }
 }
