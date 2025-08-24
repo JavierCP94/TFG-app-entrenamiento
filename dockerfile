@@ -1,6 +1,6 @@
 # Etapa 1: Construcción del Frontend
 FROM node:18 AS frontend-build
-WORKDIR /app/frontend
+WORKDIR /app
 COPY frontend/package*.json ./
 RUN npm install
 COPY frontend/ .
@@ -13,8 +13,11 @@ COPY backend/pom.xml .
 RUN mvn dependency:go-offline
 COPY backend/src ./src
 
-# Copiar archivos estáticos del frontend al directorio de recursos estáticos del backend
-COPY --from=frontend-build /app/frontend/dist/frontend /app/src/main/resources/static
+# Crear directorio de recursos estáticos
+RUN mkdir -p src/main/resources/static
+
+# Copiar archivos estáticos del frontend
+COPY --from=frontend-build /app/dist/frontend/ src/main/resources/static/
 
 # Construir la aplicación
 RUN mvn clean package -DskipTests
