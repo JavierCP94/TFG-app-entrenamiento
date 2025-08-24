@@ -9,8 +9,8 @@ public class SpaForwardController {
     // Handle all routes and forward to index.html
     @GetMapping({
         "/",
-        "/{path:^(?!.*\\.).*$",
-        "/**/{path:^(?!.*\\.).*$}"
+        "/{path:[^\\.]*}",
+        "/**/{path:^(?!.*\\..*$).*}"
     })
     public String forwardToSpa() {
         return "forward:/index.html";

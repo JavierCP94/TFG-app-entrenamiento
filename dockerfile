@@ -1,15 +1,22 @@
-# Etapa 1: Construcción con Maven y Java 17
-FROM maven:3.9.4-eclipse-temurin-17 AS build
+# Etapa 1: Construcción del Frontend
+FROM node:18 AS frontend-build
+WORKDIR /app/frontend
+COPY frontend/package*.json ./
+RUN npm install
+COPY frontend/ .
+RUN npm run build -- --configuration production
 
-# Directorio de trabajo en la imagen
-WORKDIR /app
-
-# Copiamos pom.xml y descargamos dependencias
+# Etapa 2: Construcción del Backend
+FROM maven:3.9.4-eclipse-temurin-17 AS backend-build
+WORKDIR /app/backend
 COPY backend/pom.xml .
 RUN mvn dependency:go-offline
-
-# Copiamos el resto del código fuente y construimos el JAR
 COPY backend/src ./src
+
+# Copiar archivos estáticos del frontend al directorio de recursos estáticos del backend
+COPY --from=frontend-build /app/frontend/dist/frontend /app/backend/src/main/resources/static
+
+# Construir la aplicación
 RUN mvn clean package -DskipTests
 
 # Etapa 2: Imagen final con JRE más ligero
