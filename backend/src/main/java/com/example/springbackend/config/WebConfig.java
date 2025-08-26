@@ -12,11 +12,11 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(@NonNull CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOriginPatterns("*") // Permitir todos los orígenes
+                .allowedOrigins("https://<tu-frontend-en-render>.onrender.com", "http://localhost:4200")
                 .allowedMethods("*")
                 .allowedHeaders("*")
                 .exposedHeaders("*")
-                .allowCredentials(false)
+                .allowCredentials(true)
                 .maxAge(3600); // 1 hora de caché para las preflight requests
     }
 
@@ -26,7 +26,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/**")
                 .addResourceLocations("classpath:/static/")
                 .setCachePeriod(0);
-        
+
         // Habilitar el manejo de recursos webjars
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/")
