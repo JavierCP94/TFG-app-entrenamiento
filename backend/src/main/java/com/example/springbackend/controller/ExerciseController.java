@@ -18,7 +18,8 @@ import com.example.springbackend.repository.ExerciseRepository;
 
 @RestController
 @RequestMapping("/api/exercises")
-@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
+@CrossOrigin(origins = { "https://<tu-frontend-en-render>.onrender.com",
+        "http://localhost:4200" }, allowCredentials = "true")
 public class ExerciseController {
 
     @Autowired
@@ -64,7 +65,8 @@ public class ExerciseController {
             }
         }
 
-        List<Exercise> filtered = new ArrayList<>(exerciseRepository.findByMuscleGroupAndLevelIgnoreCase(muscleGroup, level));
+        List<Exercise> filtered = new ArrayList<>(
+                exerciseRepository.findByMuscleGroupAndLevelIgnoreCase(muscleGroup, level));
         Collections.shuffle(filtered);
         Set<String> usedNames = new HashSet<>();
         List<Exercise> unique = new ArrayList<>();
