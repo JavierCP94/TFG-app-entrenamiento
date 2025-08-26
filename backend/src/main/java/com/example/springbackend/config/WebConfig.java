@@ -13,9 +13,9 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(@NonNull CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins("https://tfg-app-entrenamiento.onrender.com", "http://localhost:4200")
-                .allowedMethods("*")
-                .allowedHeaders("*")
-                .exposedHeaders("*")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("Authorization", "Content-Type", "X-Requested-With", "Accept", "Origin")
+                .exposedHeaders("Authorization")
                 .allowCredentials(true)
                 .maxAge(3600); // 1 hora de caché para las preflight requests
     }
