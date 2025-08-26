@@ -42,10 +42,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authz -> authz
                         // Recursos estáticos
                         .requestMatchers(
-                                "/", "/index.html", "/browser/**", "/assets/**", "/static/**",
-                                "/**/*.js", "/**/*.css", "/**/*.ico", "/**/*.png", "/**/*.svg",
-                                "/**/*.woff2", "/**/*.woff", "/**/*.ttf", "/**/*.json",
-                                "/**/*.jpg", "/**/*.jpeg", "/**/*.gif", "/**/*.html")
+                                "/", "/index.html", "/browser/**", "/assets/**", "/static/**", "/**")
                         .permitAll()
                         // Endpoints públicos
                         .requestMatchers(
