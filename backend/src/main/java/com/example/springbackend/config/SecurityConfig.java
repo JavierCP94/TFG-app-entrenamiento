@@ -1,6 +1,5 @@
 package com.example.springbackend.config;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.context.annotation.Bean;
@@ -72,12 +71,9 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        List<String> allowedOrigins = appProperties.getAllowedOrigins();
-
-        // Permitir cualquier origen mientras usamos credenciales
-        configuration.setAllowedOriginPatterns(Collections.singletonList("*"));
+        configuration
+                .setAllowedOrigins(List.of("https://<tu-frontend-en-render>.onrender.com", "http://localhost:4200"));
         configuration.setAllowCredentials(true);
-
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setExposedHeaders(List.of("Authorization"));
