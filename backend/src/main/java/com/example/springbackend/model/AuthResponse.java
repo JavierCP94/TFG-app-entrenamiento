@@ -9,25 +9,31 @@ public class AuthResponse {
     private String message;
     private boolean success;
 
-    // Constructors
-    public AuthResponse() {}
+    // -----------------------------
+    // Constructores
+    // -----------------------------
 
+    // Respuesta de error
     public AuthResponse(boolean success, String message) {
         this.success = success;
         this.message = message;
     }
 
-    public AuthResponse(String token, String username, String email, String firstName, String lastName) {
+    // Respuesta de éxito con token y datos de usuario
+    public AuthResponse(boolean success, String token, String username, String email,
+            String firstName, String lastName) {
+        this.success = success;
         this.token = token;
         this.username = username;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.success = true;
-        this.message = "Authentication successful";
+        this.message = success ? "Authentication successful" : "Authentication failed";
     }
 
-    // Getters and Setters
+    // -----------------------------
+    // Getters & Setters
+    // -----------------------------
     public String getToken() {
         return token;
     }

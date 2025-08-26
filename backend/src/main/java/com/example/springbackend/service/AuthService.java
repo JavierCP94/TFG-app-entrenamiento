@@ -25,6 +25,9 @@ public class AuthService {
     @Autowired
     private JwtService jwtService;
 
+    // -----------------------------
+    // REGISTRO
+    // -----------------------------
     public AuthResponse register(RegisterRequest request) {
         try {
             // Verificar si el usuario ya existe
@@ -43,21 +46,25 @@ public class AuthService {
             user.setPassword(passwordEncoder.encode(request.getPassword()));
             user.setFirstName(request.getFirstName());
             user.setLastName(request.getLastName());
+            user.setLastLogin(LocalDateTime.now());
 
-            // Guardar usuario
+            // Guardar usuario en MongoDB
             User savedUser = userRepository.save(user);
 
             // Generar token JWT
             String token = jwtService.generateToken(savedUser.getUsername());
 
-            return new AuthResponse(token, savedUser.getUsername(), savedUser.getEmail(), 
-                                  savedUser.getFirstName(), savedUser.getLastName());
+            return new AuthResponse(true, token, savedUser.getUsername(), savedUser.getEmail(),
+                    savedUser.getFirstName(), savedUser.getLastName());
 
         } catch (Exception e) {
             return new AuthResponse(false, "Registration failed: " + e.getMessage());
         }
     }
 
+    // -----------------------------
+    // LOGIN
+    // -----------------------------
     public AuthResponse login(LoginRequest request) {
         try {
             // Buscar usuario por username o email
@@ -84,14 +91,17 @@ public class AuthService {
             // Generar token JWT
             String token = jwtService.generateToken(user.getUsername());
 
-            return new AuthResponse(token, user.getUsername(), user.getEmail(), 
-                                  user.getFirstName(), user.getLastName());
+            return new AuthResponse(true, token, user.getUsername(), user.getEmail(),
+                    user.getFirstName(), user.getLastName());
 
         } catch (Exception e) {
             return new AuthResponse(false, "Login failed: " + e.getMessage());
         }
     }
 
+    // -----------------------------
+    // Obtener usuario por username
+    // -----------------------------
     public Optional<User> getUserByUsername(String username) {
         return userRepository.findByUsername(username);
     }
