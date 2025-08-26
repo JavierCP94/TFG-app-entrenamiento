@@ -9,20 +9,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class SpaForwardController {
 
-    // Rutas principales que apunta Angular
-    @GetMapping({
-            "/",
-            "/login"
-    })
-    @ResponseBody
-    public Resource forwardToSpa() {
-        return new ClassPathResource("/static/browser/index.html");
-    }
-
-    // Catch-all para cualquier otra ruta
+    // Catch-all para cualquier ruta (SPA fallback)
     @GetMapping("/**")
     @ResponseBody
-    public Resource forwardToSpaCatchAll() {
+    public Resource forwardToSpa() {
         return new ClassPathResource("/static/browser/index.html");
     }
 }
