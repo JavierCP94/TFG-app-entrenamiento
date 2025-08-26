@@ -74,13 +74,9 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         List<String> allowedOrigins = appProperties.getAllowedOrigins();
 
-        if (allowedOrigins.contains("*")) {
-            configuration.setAllowedOriginPatterns(Collections.singletonList("*"));
-            configuration.setAllowCredentials(false);
-        } else {
-            configuration.setAllowedOriginPatterns(allowedOrigins);
-            configuration.setAllowCredentials(true);
-        }
+        // Permitir cualquier origen mientras usamos credenciales
+        configuration.setAllowedOriginPatterns(Collections.singletonList("*"));
+        configuration.setAllowCredentials(true);
 
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
