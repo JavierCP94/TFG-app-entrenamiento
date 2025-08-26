@@ -18,7 +18,7 @@ import com.example.springbackend.repository.ExerciseRepository;
 
 @RestController
 @RequestMapping("/api/exercises")
-@CrossOrigin(origins = { "https://<tu-frontend-en-render>.onrender.com",
+@CrossOrigin(origins = { "https://tfg-app-entrenamiento.onrender.com",
         "http://localhost:4200" }, allowCredentials = "true")
 public class ExerciseController {
 

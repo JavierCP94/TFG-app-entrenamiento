@@ -12,7 +12,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(@NonNull CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("https://<tu-frontend-en-render>.onrender.com", "http://localhost:4200")
+                .allowedOrigins("https://tfg-app-entrenamiento.onrender.com", "http://localhost:4200")
                 .allowedMethods("*")
                 .allowedHeaders("*")
                 .exposedHeaders("*")

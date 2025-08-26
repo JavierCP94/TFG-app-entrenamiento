@@ -72,7 +72,7 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration
-                .setAllowedOrigins(List.of("https://<tu-frontend-en-render>.onrender.com", "http://localhost:4200"));
+                .setAllowedOrigins(List.of("https://tfg-app-entrenamiento.onrender.com", "http://localhost:4200"));
         configuration.setAllowCredentials(true);
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
