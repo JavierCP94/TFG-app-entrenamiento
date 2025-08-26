@@ -1,15 +1,9 @@
 package com.example.springbackend.config;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class BeansConfig {
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    // Aquí puedes agregar otros beans si los necesitas
+    // El PasswordEncoder se mantiene en SecurityConfig
 }
