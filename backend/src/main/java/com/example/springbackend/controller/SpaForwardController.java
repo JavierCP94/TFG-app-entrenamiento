@@ -19,8 +19,8 @@ public class SpaForwardController {
         return new ClassPathResource("/static/browser/index.html");
     }
 
-    // Catch-all para cualquier otra ruta que no sea archivo
-    @GetMapping("/**/{path:[^.]*}")
+    // Catch-all para cualquier otra ruta
+    @GetMapping("/**")
     @ResponseBody
     public Resource forwardToSpaCatchAll() {
         return new ClassPathResource("/static/browser/index.html");
