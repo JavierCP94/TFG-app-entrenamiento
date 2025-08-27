@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class SpaForwardController {
 
-    // Captura la raíz '/' y rutas que NO sean archivos estáticos (SPA fallback)
-    @GetMapping(value = { "/", "/{path:^(?!.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|json)$).*$}" })
+    // Solo rutas que NO sean archivos estáticos (SPA fallback)
+    @GetMapping(value = "/{path:^(?!.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|json)$).*$}")
     @ResponseBody
     public Resource forwardToSpa() {
         return new ClassPathResource("/static/browser/index.html");
