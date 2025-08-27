@@ -38,7 +38,7 @@ export interface User {
   providedIn: "root",
 })
 export class AuthService {
-  private apiUrl = environment.apiUrl + "/auth";
+  private apiUrl = environment.apiUrl + "/api/auth";
   private currentUserSubject: BehaviorSubject<User | null>;
   public currentUser: Observable<User | null>;
 
