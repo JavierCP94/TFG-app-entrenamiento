@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { BehaviorSubject, Observable } from "rxjs";
+import { map } from "rxjs/operators";
+import { environment } from "../../environments/environment";
 
 export interface LoginRequest {
   username: string;
@@ -34,15 +35,15 @@ export interface User {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080/api/auth';
+  private apiUrl = environment.apiUrl + "/auth";
   private currentUserSubject: BehaviorSubject<User | null>;
   public currentUser: Observable<User | null>;
 
   constructor(private http: HttpClient) {
-    const storedUser = localStorage.getItem('currentUser');
+    const storedUser = localStorage.getItem("currentUser");
     this.currentUserSubject = new BehaviorSubject<User | null>(
       storedUser ? JSON.parse(storedUser) : null
     );
@@ -54,54 +55,60 @@ export class AuthService {
   }
 
   login(loginRequest: LoginRequest): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiUrl}/login`, loginRequest)
-      .pipe(map(response => {
-        if (response.success && response.token) {
-          const user: User = {
-            username: response.username!,
-            email: response.email!,
-            firstName: response.firstName!,
-            lastName: response.lastName!
-          };
-          
-          localStorage.setItem('currentUser', JSON.stringify(user));
-          localStorage.setItem('token', response.token);
-          this.currentUserSubject.next(user);
-        }
-        return response;
-      }));
+    return this.http
+      .post<AuthResponse>(`${this.apiUrl}/login`, loginRequest)
+      .pipe(
+        map((response) => {
+          if (response.success && response.token) {
+            const user: User = {
+              username: response.username!,
+              email: response.email!,
+              firstName: response.firstName!,
+              lastName: response.lastName!,
+            };
+
+            localStorage.setItem("currentUser", JSON.stringify(user));
+            localStorage.setItem("token", response.token);
+            this.currentUserSubject.next(user);
+          }
+          return response;
+        })
+      );
   }
 
   register(registerRequest: RegisterRequest): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiUrl}/register`, registerRequest)
-      .pipe(map(response => {
-        if (response.success && response.token) {
-          const user: User = {
-            username: response.username!,
-            email: response.email!,
-            firstName: response.firstName!,
-            lastName: response.lastName!
-          };
-          
-          localStorage.setItem('currentUser', JSON.stringify(user));
-          localStorage.setItem('token', response.token);
-          this.currentUserSubject.next(user);
-        }
-        return response;
-      }));
+    return this.http
+      .post<AuthResponse>(`${this.apiUrl}/register`, registerRequest)
+      .pipe(
+        map((response) => {
+          if (response.success && response.token) {
+            const user: User = {
+              username: response.username!,
+              email: response.email!,
+              firstName: response.firstName!,
+              lastName: response.lastName!,
+            };
+
+            localStorage.setItem("currentUser", JSON.stringify(user));
+            localStorage.setItem("token", response.token);
+            this.currentUserSubject.next(user);
+          }
+          return response;
+        })
+      );
   }
 
   logout(): void {
-    localStorage.removeItem('currentUser');
-    localStorage.removeItem('token');
+    localStorage.removeItem("currentUser");
+    localStorage.removeItem("token");
     this.currentUserSubject.next(null);
   }
 
   isAuthenticated(): boolean {
-    return !!localStorage.getItem('token');
+    return !!localStorage.getItem("token");
   }
 
   getToken(): string | null {
-    return localStorage.getItem('token');
+    return localStorage.getItem("token");
   }
 }
