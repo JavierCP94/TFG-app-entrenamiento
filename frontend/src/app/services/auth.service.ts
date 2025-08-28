@@ -55,6 +55,32 @@ export class AuthService {
   }
 
   login(loginRequest: LoginRequest): Observable<AuthResponse> {
+    if (!environment.production) {
+      // Modo desarrollo: simular login exitoso
+      const fakeResponse: AuthResponse = {
+        success: true,
+        token: "dev-token",
+        username: loginRequest.username,
+        email: "dev@email.com",
+        firstName: "Dev",
+        lastName: "User",
+        message: "Development login bypassed.",
+      };
+      const user: User = {
+        username: fakeResponse.username!,
+        email: fakeResponse.email!,
+        firstName: fakeResponse.firstName!,
+        lastName: fakeResponse.lastName!,
+      };
+      localStorage.setItem("currentUser", JSON.stringify(user));
+      localStorage.setItem("token", fakeResponse.token!);
+      this.currentUserSubject.next(user);
+      return new Observable<AuthResponse>((observer) => {
+        observer.next(fakeResponse);
+        observer.complete();
+      });
+    }
+    // Modo producción: login real
     return this.http
       .post<AuthResponse>(`${this.apiUrl}/login`, loginRequest)
       .pipe(
@@ -77,6 +103,32 @@ export class AuthService {
   }
 
   register(registerRequest: RegisterRequest): Observable<AuthResponse> {
+    if (!environment.production) {
+      // Modo desarrollo: simular registro exitoso
+      const fakeResponse: AuthResponse = {
+        success: true,
+        token: "dev-token",
+        username: registerRequest.username,
+        email: registerRequest.email,
+        firstName: registerRequest.firstName,
+        lastName: registerRequest.lastName,
+        message: "Development register bypassed.",
+      };
+      const user: User = {
+        username: fakeResponse.username!,
+        email: fakeResponse.email!,
+        firstName: fakeResponse.firstName!,
+        lastName: fakeResponse.lastName!,
+      };
+      localStorage.setItem("currentUser", JSON.stringify(user));
+      localStorage.setItem("token", fakeResponse.token!);
+      this.currentUserSubject.next(user);
+      return new Observable<AuthResponse>((observer) => {
+        observer.next(fakeResponse);
+        observer.complete();
+      });
+    }
+    // Modo producción: registro real
     return this.http
       .post<AuthResponse>(`${this.apiUrl}/register`, registerRequest)
       .pipe(
