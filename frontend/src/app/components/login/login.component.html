@@ -52,7 +52,12 @@
     <div class="login-footer">
       <p>
         Don't have an account?
-        <a href="#" (click)="goToRegister()" class="link">Register here</a>
+        <a
+          href="#"
+          (click)="$event.preventDefault(); goToRegister()"
+          class="link"
+          >Register here</a
+        >
       </p>
     </div>
   </div>
