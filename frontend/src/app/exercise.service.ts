@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { environment } from "../environments/environment";
 
 export interface Exercise {
   id: string;
@@ -17,7 +18,7 @@ export interface Exercise {
   providedIn: "root",
 })
 export class ExerciseService {
-  private baseUrl = "http://localhost:8080/api/exercises";
+  private baseUrl = environment.apiUrl + "/api/exercises";
 
   constructor(private http: HttpClient) {}
 
