@@ -106,7 +106,9 @@
     <div class="register-footer">
       <p>
         Already have an account?
-        <a href="#" (click)="goToLogin()" class="link">Login here</a>
+        <a href="#" (click)="$event.preventDefault(); goToLogin()" class="link"
+          >Login here</a
+        >
       </p>
     </div>
   </div>
