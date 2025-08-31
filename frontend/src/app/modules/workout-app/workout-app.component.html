@@ -1,0 +1,66 @@
+<!-- Fondo de pantalla -->
+<div
+  class="fixed inset-0 bg-[url('/assets/images/bg.jpg')] bg-cover bg-no-repeat bg-center bg-fixed z-[-1]"
+></div>
+
+<!-- Contenido de la app -->
+<div
+  class="relative min-h-screen flex flex-col md:flex-row items-center justify-center gap-6 p-4"
+>
+  <!-- Título explicativo encima de los botones -->
+
+  <div
+    class="mb-6 px-6 py-3 rounded-xl border-white bg-black shadow-lg text-center max-w-xl"
+  >
+    <h2 class="rounded-xl font-semibold text-white shadow-md">
+      Choose muscle group, level and number of exercises to create your workout!
+    </h2>
+  </div>
+  <!-- Botones de filtro -->
+  <div class="flex flex-col items-center gap-6">
+    <ng-container *ngFor="let btn of buttons">
+      <div class="relative dropdown">
+        <button
+          class="bg-[#2eaae0] w-56 text-white px-3 py-2 rounded-2xl hover:bg-[#258cb9]"
+          (click)="toggleMenu(btn.id)"
+        >
+          {{ btn.label }}
+        </button>
+
+        <div
+          *ngIf="activeMenu === btn.id"
+          class="absolute mt-2 w-48 bg-white border rounded shadow-lg z-10"
+        >
+          <button
+            *ngFor="let option of btn.options"
+            class="w-full text-left px-4 py-2 hover:bg-gray-100"
+            (click)="selectOption(btn.id, option)"
+          >
+            {{ option }}
+          </button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <!-- Lista de ejercicios -->
+  <div
+    *ngIf="exercises.length > 0"
+    class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+  >
+    <div
+      *ngFor="let exercise of exercises"
+      class="bg-white rounded-xl shadow p-4 max-w-sm"
+    >
+      <img
+        [src]="exercise.imageUrl"
+        alt="{{ exercise.name }}"
+        class="w-full h-48 object-cover rounded-lg mb-4"
+      />
+      <h3 class="text-xl font-semibold mb-2">{{ exercise.name }}</h3>
+      <p><strong>Sets:</strong> {{ exercise.series }}</p>
+      <p><strong>Repetitions:</strong> {{ exercise.repetitions }}</p>
+      <p><strong>Rest:</strong> {{ exercise.restSeconds }} seconds</p>
+    </div>
+  </div>
+</div>

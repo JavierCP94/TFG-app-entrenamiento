@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: fitness-app
+    env: docker
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: SERVER_PORT
+        value: 10000
+      - key: MONGODB_URI
+        fromService:
+          name: mongodb
+          type: mongodb
+          property: connectionString
+    healthCheckPath: /api/health
+
+databases:
+  - name: mongodb
+    databaseName: fitnessapp

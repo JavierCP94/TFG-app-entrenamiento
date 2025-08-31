@@ -1,0 +1,299 @@
+[
+  { 
+  "name": "Invisible Thruster",
+  "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/ta6e08qprky37319zn99m/BWQO4622.JPG?rlkey=5v7w7991kqubayethkqsosbj0&st=o6qhfc61",
+  "repetitions": 10,
+  "restSeconds": 120,
+  "muscleGroup": "Full Body",
+  "level": "Beginner",
+  "sets": 3
+},
+  {
+  "name": "Thrusters with dumbbell",
+  "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/5axpgk2ol0k2wdigsub70/YHPI3197.JPG?rlkey=7x67xdbfosispl408suy1tjvs&st=oznk8fax",
+  "repetitions": 10,
+  "restSeconds": 120,
+  "muscleGroup": "Full Body",
+  "level": "Intermediate",
+  "sets": 3
+  },
+  {
+  "name": "Wall ball shots",
+  "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/qs3vy08h2m43ud69xcrqu/EROZ9346.JPG?rlkey=c0067j3t8gij07u4km376096l&st=d6ggn13m",
+  "repetitions": 10,
+  "restSeconds": 120,
+  "muscleGroup": "Full Body",
+  "level": "Advanced",
+  "sets": 3
+  },
+  {
+  "name": "Box push-ups",
+  "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/qxly4vikgxtfvsw7y61l4/AQYU3945.JPG?rlkey=9cxg0int936y60uul208m83ym&st=345bqipv",
+  "repetitions": 12,
+  "restSeconds": 90,
+  "muscleGroup": "Upper Body",
+  "level": "Beginner",
+  "sets": 3
+  },
+  {
+    "name": "Inverted row",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/j6y0g5xd194spk86w9es4/BUVN8567.JPG?rlkey=tz8my2ckmwogvznxul0atdrcc&st=z9dzm2nh",
+    "repetitions": 12,
+    "restSeconds": 90,
+    "muscleGroup": "Upper Body",
+    "level": "Beginner",
+    "sets": 3
+  },
+  {
+    "name": "Triceps extension",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/6psrut1iahzeivzle5gw3/MGOV3508.JPG?rlkey=ip52mj69g6x5ckcu8gv2z3y9c&st=7ecrigsa",
+    "repetitions": 12,
+    "restSeconds": 90,
+    "muscleGroup": "Upper Body",
+    "level": "Beginner",
+    "sets": 3
+  },
+  {
+    "name": "Z-bar biceps curl",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/n9gfr9eslc98mozi4l70t/QIOD6343.JPG?rlkey=ia6vetg5xzmrkj95d7vl6lhf4&st=3uvdb2d7",
+    "repetitions": 12,
+    "restSeconds": 90,
+    "muscleGroup": "Upper Body",
+    "level": "Beginner",
+    "sets": 3
+  },
+  {
+    "name": "Machine chest press",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/a8gmm3vq8o1ddl6nxdpdr/YFVA6582.JPG?rlkey=dqglw26wbjde930jvmuqxvcy0&st=8h6xk5g2",
+    "repetitions": 12,
+    "restSeconds": 90,
+    "muscleGroup": "Upper Body",
+    "level": "Beginner",
+    "sets": 3
+  },
+  {
+    "name": "Knee push-ups",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/etq5g2wg2e3fhr7xdz3ku/OICY0787.JPG?rlkey=uojkko8owx466ynfilj99qul6&st=az05k7bp",
+    "repetitions": 12,
+    "restSeconds": 90,
+    "muscleGroup": "Upper Body",
+    "level": "Intermediate",
+    "sets": 3
+  },
+  {
+    "name": "Band pull-ups",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/qp2lxqndq95s52bf799qn/IMG_2356.MOV?rlkey=32u5beo5p4zxacjahyo6ht108&st=p5u6kva7",
+    "repetitions": 12,
+    "restSeconds": 90,
+    "muscleGroup": "Upper Body",
+    "level": "Intermediate",
+    "sets": 3
+  },
+  {
+    "name": "Skull crushers",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/cta8dltxzbdz1laez4kfu/TUMG6258.JPG?rlkey=scywbxxs21pri2dx9c6rqacl5&st=10x4somn",
+    "repetitions": 12,
+    "restSeconds": 90,
+    "muscleGroup": "Upper Body",
+    "level": "Intermediate",
+    "sets": 3
+  },
+  {
+    "name": "Dumbbell biceps curl",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/1mdm1q6786674egnzi7ac/XGAL7847.JPG?rlkey=r2l3d1g5m42chdlzx927ljy8z&st=h4b96102",
+    "repetitions": 12,
+    "restSeconds": 90,
+    "muscleGroup": "Upper Body",
+    "level": "Intermediate",
+    "sets": 3
+  },
+  {
+    "name": "Barbell bench press",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/lni7fqjkeliyj3qp6xlym/QCJE3954.JPG?rlkey=xzst91fsqxto7v6tkvdwcrsld&st=f5c6lyz5",
+    "repetitions": 12,
+    "restSeconds": 90,
+    "muscleGroup": "Upper Body",
+    "level": "Intermediate",
+    "sets": 3
+  },
+  {
+    "name": "Push-ups",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/zhs6w8zypck6hqrrs847l/YGBQ7872.JPG?rlkey=7b0f6oim27wpw2i4w3u4o8ass&st=bvr9cq5p",
+    "repetitions": 12,
+    "restSeconds": 90,
+    "muscleGroup": "Upper Body",
+    "level": "Advanced",
+    "sets": 3
+  },
+  {
+    "name": "Pull-ups",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/0crl055bjaf5oe27m9egs/IMG_2358.MOV?rlkey=reooc2oqhb3jnfzz853iw6bwf&st=s3ihhogk",
+    "repetitions": 12,
+    "restSeconds": 90,
+    "muscleGroup": "Upper Body",
+    "level": "Advanced",
+    "sets": 3
+  },
+  {
+    "name": "Tiger push-ups",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/frqwh633youm3uutnvk9t/KXEK8914.JPG?rlkey=wy239raivzvghg19vro7cn41n&st=r42qryh4",
+    "repetitions": 12,
+    "restSeconds": 90,
+    "muscleGroup": "Upper Body",
+    "level": "Advanced",
+    "sets": 3
+  },
+  {
+    "name": "Cable biceps curl",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/fvwof5zxnfkbon7oax1m5/GOWR0492.JPG?rlkey=v8u30qwew3w2fckv1d7h11u3h&st=784qp632",
+    "repetitions": 12,
+    "restSeconds": 90,
+    "muscleGroup": "Upper Body",
+    "level": "Advanced",
+    "sets": 3
+  },
+  {
+    "name": "Dumbbell bench press",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/k3jgyrp74wb49a76sswlo/ELED4200.JPG?rlkey=c5y8j8gga8hhpfw2tvob1qi4n&st=bgd3bku6",
+    "repetitions": 12,
+    "restSeconds": 90,
+    "muscleGroup": "Upper Body",
+    "level": "Advanced",
+    "sets": 3
+  },
+  {
+    "name": "Air squat",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/ins5old0o12ib7ty938jk/WhatsApp-Image-2025-06-07-at-10.37.27.jpeg?rlkey=orvpsi4jiddzwyn56q9419ocn",
+    "repetitions": 10,
+    "restSeconds": 120,
+    "muscleGroup": "Lower Body",
+    "level": "Beginner",
+    "sets": 3
+  },
+  {
+    "name": "Good mornings",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/ins5old0o12ib7ty938jk/WhatsApp-Image-2025-06-07-at-10.37.27.jpeg?rlkey=orvpsi4jiddzwyn56q9419ocn",
+    "repetitions": 10,
+    "restSeconds": 120,
+    "muscleGroup": "Lower Body",
+    "level": "Beginner",
+    "sets": 3
+  },
+  {
+    "name": "Inverted lunges",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/ins5old0o12ib7ty938jk/WhatsApp-Image-2025-06-07-at-10.37.27.jpeg?rlkey=orvpsi4jiddzwyn56q9419ocn",
+    "repetitions": 10,
+    "restSeconds": 120,
+    "muscleGroup": "Lower Body",
+    "level": "Beginner",
+    "sets": 3
+  },
+  {
+    "name": "Plate jump",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/ins5old0o12ib7ty938jk/WhatsApp-Image-2025-06-07-at-10.37.27.jpeg?rlkey=orvpsi4jiddzwyn56q9419ocn",
+    "repetitions": 10,
+    "restSeconds": 120,
+    "muscleGroup": "Lower Body",
+    "level": "Beginner",
+    "sets": 3
+  },
+  {
+    "name": "Bulgarian squat",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/ins5old0o12ib7ty938jk/WhatsApp-Image-2025-06-07-at-10.37.27.jpeg?rlkey=orvpsi4jiddzwyn56q9419ocn",
+    "repetitions": 10,
+    "restSeconds": 120,
+    "muscleGroup": "Lower Body",
+    "level": "Beginner",
+    "sets": 3
+  },
+  {
+    "name": "Goblet squat",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/ins5old0o12ib7ty938jk/WhatsApp-Image-2025-06-07-at-10.37.27.jpeg?rlkey=orvpsi4jiddzwyn56q9419ocn",
+    "repetitions": 10,
+    "restSeconds": 120,
+    "muscleGroup": "Lower Body",
+    "level": "Intermediate",
+    "sets": 3
+  },
+  {
+    "name": "Dumbbell deadlift",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/ins5old0o12ib7ty938jk/WhatsApp-Image-2025-06-07-at-10.37.27.jpeg?rlkey=orvpsi4jiddzwyn56q9419ocn",
+    "repetitions": 10,
+    "restSeconds": 120,
+    "muscleGroup": "Lower Body",
+    "level": "Intermediate",
+    "sets": 3
+  },
+  {
+    "name": "Lunges",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/ins5old0o12ib7ty938jk/WhatsApp-Image-2025-06-07-at-10.37.27.jpeg?rlkey=orvpsi4jiddzwyn56q9419ocn",
+    "repetitions": 10,
+    "restSeconds": 120,
+    "muscleGroup": "Lower Body",
+    "level": "Intermediate",
+    "sets": 3
+  },
+  {
+    "name": "Box steps",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/ins5old0o12ib7ty938jk/WhatsApp-Image-2025-06-07-at-10.37.27.jpeg?rlkey=orvpsi4jiddzwyn56q9419ocn",
+    "repetitions": 10,
+    "restSeconds": 120,
+    "muscleGroup": "Lower Body",
+    "level": "Intermediate",
+    "sets": 3
+  },
+  {
+    "name": "Db. bulgarian squat",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/ins5old0o12ib7ty938jk/WhatsApp-Image-2025-06-07-at-10.37.27.jpeg?rlkey=orvpsi4jiddzwyn56q9419ocn",
+    "repetitions": 10,
+    "restSeconds": 120,
+    "muscleGroup": "Lower Body",
+    "level": "Intermediate",
+    "sets": 3
+  },
+  {
+    "name": "Back squat",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/ins5old0o12ib7ty938jk/WhatsApp-Image-2025-06-07-at-10.37.27.jpeg?rlkey=orvpsi4jiddzwyn56q9419ocn",
+    "repetitions": 10,
+    "restSeconds": 120,
+    "muscleGroup": "Lower Body",
+    "level": "Advanced",
+    "sets": 3
+  },
+  {
+    "name": "Deadlift",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/ins5old0o12ib7ty938jk/WhatsApp-Image-2025-06-07-at-10.37.27.jpeg?rlkey=orvpsi4jiddzwyn56q9419ocn",
+    "repetitions": 10,
+    "restSeconds": 120,
+    "muscleGroup": "Lower Body",
+    "level": "Advanced",
+    "sets": 3
+  },
+  {
+    "name": "Jumping lunges",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/ins5old0o12ib7ty938jk/WhatsApp-Image-2025-06-07-at-10.37.27.jpeg?rlkey=orvpsi4jiddzwyn56q9419ocn",
+    "repetitions": 10,
+    "restSeconds": 120,
+    "muscleGroup": "Lower Body",
+    "level": "Advanced",
+    "sets": 3
+  },
+  {
+    "name": "Box jumps",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/ins5old0o12ib7ty938jk/WhatsApp-Image-2025-06-07-at-10.37.27.jpeg?rlkey=orvpsi4jiddzwyn56q9419ocn",
+    "repetitions": 10,
+    "restSeconds": 120,
+    "muscleGroup": "Lower Body",
+    "level": "Advanced",
+    "sets": 3
+  },
+  {
+    "name": "Bulgarian jumps",
+    "imageUrl": "https://dl.dropboxusercontent.com/scl/fi/ins5old0o12ib7ty938jk/WhatsApp-Image-2025-06-07-at-10.37.27.jpeg?rlkey=orvpsi4jiddzwyn56q9419ocn",
+    "repetitions": 10,
+    "restSeconds": 120,
+    "muscleGroup": "Lower Body",
+    "level": "Advanced",
+    "sets": 3
+  }
+]

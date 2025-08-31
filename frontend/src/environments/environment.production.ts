@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: '/api'
+  // Usar URL relativa para la API en producción
+  apiUrl: "https://tfg-app-entrenamiento.onrender.com",
 };

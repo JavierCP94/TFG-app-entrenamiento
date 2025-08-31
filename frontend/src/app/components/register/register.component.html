@@ -1,0 +1,115 @@
+<div
+  class="fixed inset-0 bg-[url('/assets/images/bg.jpg')] bg-cover bg-no-repeat bg-center bg-fixed z-[-1]"
+></div>
+<div class="register-container">
+  <div class="register-card">
+    <div class="register-header">
+      <h2>Register</h2>
+      <p>Join our training community</p>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" #registerForm="ngForm" class="register-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            [(ngModel)]="registerData.firstName"
+            required
+            class="form-control"
+            placeholder="Your name"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            [(ngModel)]="registerData.lastName"
+            required
+            class="form-control"
+            placeholder="Your last name"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          [(ngModel)]="registerData.username"
+          required
+          class="form-control"
+          placeholder="Choose a username"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="registerData.email"
+          required
+          class="form-control"
+          placeholder="your@email.com"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="registerData.password"
+          required
+          class="form-control"
+          placeholder="Minimum 6 characters"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          [(ngModel)]="confirmPassword"
+          required
+          class="form-control"
+          placeholder="Repeat your password"
+        />
+      </div>
+
+      <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
+      <button
+        type="submit"
+        class="btn-primary"
+        [disabled]="isLoading || !registerForm.valid"
+      >
+        <span *ngIf="isLoading" class="loading-spinner"></span>
+        {{ isLoading ? "Registering..." : "Register" }}
+      </button>
+    </form>
+
+    <div class="register-footer">
+      <p>
+        Already have an account?
+        <a href="#" (click)="$event.preventDefault(); goToLogin()" class="link"
+          >Login here</a
+        >
+      </p>
+    </div>
+  </div>
+</div>

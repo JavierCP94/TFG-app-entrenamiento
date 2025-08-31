@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: fitness-app
+    runtime: docker
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URI
+        sync: false  # Se configurará manualmente en el panel de Render
+    healthCheckPath: /api/health
+    buildCommand: ./mvnw clean package -DskipTests
+    startCommand: java -Dserver.port=$PORT -Dspring.data.mongodb.uri=$MONGODB_URI -jar target/*.jar

@@ -39,7 +39,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/angular-frontend",
+            "outputPath": "../backend/src/main/resources/static",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -58,6 +58,9 @@
           },
           "configurations": {
             "production": {
+              "outputPath": "../backend/src/main/resources/static",
+              "baseHref": "/",
+              "deployUrl": "/",
               "budgets": [
                 {
                   "type": "initial",
@@ -70,7 +73,21 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "extractLicenses": true,
+              "aot": true,
+              "optimization": {
+                "scripts": true,
+                "styles": true,
+                "fonts": true
+              },
+              "sourceMap": false,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.production.ts"
+                }
+              ]
             },
             "development": {
               "optimization": false,

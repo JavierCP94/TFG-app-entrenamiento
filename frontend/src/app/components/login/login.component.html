@@ -1,0 +1,64 @@
+<div
+  class="fixed inset-0 bg-[url('/assets/images/bg.jpg')] bg-cover bg-no-repeat bg-center bg-fixed z-[-1]"
+></div>
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <h2>Login</h2>
+      <p>Access to your training account</p>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="login-form">
+      <div class="form-group">
+        <label for="username">Username or Email</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          [(ngModel)]="loginData.username"
+          required
+          class="form-control"
+          placeholder="Username or Email"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="loginData.password"
+          required
+          class="form-control"
+          placeholder="Password"
+        />
+      </div>
+
+      <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
+      <button
+        type="submit"
+        class="btn-primary"
+        [disabled]="isLoading || !loginForm.valid"
+      >
+        <span *ngIf="isLoading" class="loading-spinner"></span>
+        {{ isLoading ? "Logging in..." : "Login" }}
+      </button>
+    </form>
+
+    <div class="login-footer">
+      <p>
+        Don't have an account?
+        <a
+          href="#"
+          (click)="$event.preventDefault(); goToRegister()"
+          class="link"
+          >Register here</a
+        >
+      </p>
+    </div>
+  </div>
+</div>
