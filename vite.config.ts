@@ -2,11 +2,14 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 
+// Configuración específica para Vercel
+const isVercel = process.env.VERCEL === '1';
+
 // https://vitejs.dev/config/
 export default defineConfig({
   root: __dirname,
   plugins: [react()],
-  base: '/',
+  base: isVercel ? '/' : '/',
   publicDir: 'public',
   server: {
     port: 3000,
@@ -20,9 +23,6 @@ export default defineConfig({
     port: 3000,
     host: true,
     strictPort: true,
-    headers: {
-      'Content-Type': 'application/javascript',
-    },
   },
   resolve: {
     alias: [
@@ -36,22 +36,26 @@ export default defineConfig({
     exclude: ['lucide-react'],
   },
   build: {
+    target: 'esnext',
+    minify: 'terser',
+    sourcemap: !isVercel,
     outDir: 'dist',
     assetsDir: 'assets',
-    sourcemap: false,
     emptyOutDir: true,
+    reportCompressedSize: !isVercel,
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
       },
       output: {
+        manualChunks: {
+          react: ['react', 'react-dom', 'react-router-dom'],
+          vendor: ['lucide-react']
+        },
         entryFileNames: 'assets/[name].[hash].js',
         chunkFileNames: 'assets/[name].[hash].js',
         assetFileNames: 'assets/[name].[hash][extname]',
-        manualChunks: {
-          react: ['react', 'react-dom', 'react-router-dom'],
-          vendor: ['lucide-react'],
-        },
       },
     },
     chunkSizeWarningLimit: 1000,

@@ -1,13 +1,41 @@
-# Ignorar todo excepto lo necesario para el despliegue
+# Ignorar todo por defecto
 */
+
+# Incluir solo lo necesario para el build
 !.gitignore
-!package.json
-!package-lock.json
-!tsconfig.json
-!tsconfig.node.json
-!tsconfig.app.json
-!vite.config.ts
+!package*.json
+!tsconfig*.json
+!vite.config.*
 !index.html
-!src/
-!public/
-!dist/
+!src/**/*
+!public/**/*
+
+# Ignorar archivos de desarrollo local
+.env
+.env.*
+!.env.example
+
+# Ignorar logs y caché
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Ignorar carpetas de dependencias y caché
+node_modules/
+.cache/
+.temp/
+.tmp/
+
+# Ignorar archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar configuraciones del editor
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
