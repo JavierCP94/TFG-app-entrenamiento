@@ -1,6 +1,13 @@
 # Ignorar todo excepto lo necesario para el despliegue
-*
-!dist/
+*/
+!.gitignore
 !package.json
-!vercel.json
-!node_modules/
+!package-lock.json
+!tsconfig.json
+!tsconfig.node.json
+!tsconfig.app.json
+!vite.config.ts
+!index.html
+!src/
+!public/
+!dist/
