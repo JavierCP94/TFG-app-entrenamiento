@@ -51,7 +51,7 @@
           },
           "configurations": {
             "production": {
-              "outputPath": "../backend/src/main/resources/static",
+              "outputPath": "dist/angular-frontend",
               "baseHref": "/",
               "deployUrl": "/",
               "budgets": [
