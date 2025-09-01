@@ -8,9 +8,13 @@ export default defineConfig({
   base: '/',
   server: {
     port: 3000,
+    host: true,
+    strictPort: true
   },
   preview: {
     port: 3000,
+    host: true,
+    strictPort: true
   },
   resolve: {
     alias: {
@@ -23,6 +27,16 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    sourcemap: true,
-  },
+    sourcemap: false,
+    emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom', 'react-router-dom'],
+          vendor: ['lucide-react']
+        }
+      }
+    },
+    chunkSizeWarningLimit: 1000
+  }
 });
