@@ -1,0 +1,6 @@
+# Ignorar todo excepto lo necesario para el despliegue
+*
+!dist/
+!package.json
+!vercel.json
+!node_modules/
