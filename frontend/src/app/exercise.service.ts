@@ -7,7 +7,7 @@ export interface Exercise {
   id: string;
   name: string;
   imageUrl: string;
-  series: number;
+  sets: number;
   repetitions: number;
   restSeconds: number;
   muscleGroup: string;
