@@ -12,7 +12,8 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(@NonNull CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("https://tfg-app-entrenamiento.onrender.com", "http://localhost:4200")
+                .allowedOrigins("https://tfg-app-entrenamiento.onrender.com", "http://localhost:4200",
+                        "https://workoutappweb.netlify.app")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("Authorization", "Content-Type", "X-Requested-With", "Accept", "Origin")
                 .exposedHeaders("Authorization")

@@ -18,7 +18,7 @@ import com.example.springbackend.service.AuthService;
 @RestController
 @RequestMapping("/api/auth")
 @CrossOrigin(origins = { "https://tfg-app-entrenamiento.onrender.com",
-        "http://localhost:4200" }, allowCredentials = "true")
+        "http://localhost:4200", "https://workoutappweb.netlify.app" }, allowCredentials = "true")
 public class AuthController {
 
     @Autowired
